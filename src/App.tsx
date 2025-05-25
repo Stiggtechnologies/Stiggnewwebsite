@@ -23,6 +23,7 @@ import Blog from './pages/insights/Blog.tsx';
 import CaseStudies from './pages/insights/CaseStudies.tsx';
 import WhitePapers from './pages/insights/WhitePapers.tsx';
 import Contact from './pages/Contact.tsx';
+import Projects from './pages/Projects.tsx';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/insights/case-studies" element={<CaseStudies />} />
           <Route path="/insights/white-papers" element={<WhitePapers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/projects" element={<Projects />} />
         </Routes>
       </main>
       <Footer />

@@ -106,16 +106,19 @@ Would you like to schedule a site assessment to customize this solution for your
           const itLogs = await mockClickUpApi.getITLogs();
           const incident = itLogs.incidents[0];
           if (incident.status === "Open") {
-            agentResponse = "I've detected an ongoing network issue. Let me help you troubleshoot:\n
-1. First, please try these steps:\n
-   - Restart your computer\n
-   - Check your network cable connection\n
-   - Try connecting to a different network if available\n\n
-2. If the issue persists, I'll need:\n
-   - Your system ID\n
-   - Any error messages you're seeing\n
-   - When the issue started\n\n
-I've already escalated this to our IT Ops team for investigation.";
+            agentResponse = `I've detected an ongoing network issue. Let me help you troubleshoot:
+
+1. First, please try these steps:
+   - Restart your computer
+   - Check your network cable connection
+   - Try connecting to a different network if available
+
+2. If the issue persists, I'll need:
+   - Your system ID
+   - Any error messages you're seeing
+   - When the issue started
+
+I've already escalated this to our IT Ops team for investigation.`;
             await mockClickUpApi.logInteraction(activeRole, { issue: input, status: "Escalated" });
             await mockGoogleDriveApi.saveFile("it-incident-log", { issue: input, status: "Escalated" }, activeRole);
           } else {

@@ -57,12 +57,20 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-accent-500 mr-2 mt-0.5" />
-                <span className="text-steel-400">Fort McMurray, Alberta, Canada</span>
+                <MapPin className="h-5 w-5 text-accent-500 mr-2" />
+                <div className="text-steel-400">
+                  <p>Stigg Security@Fort McMurray</p>
+                  <p>200 Parent Way, Fort McMurray, AB T9H 5E6</p>
+                  <p>Stigg Security@Calgary</p>
+                  <p>121 8 Ave SE, High River, Alberta T1V 1R8, Canada</p>
+                </div>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-accent-500 mr-2" />
-                <span className="text-steel-400">(780) XXX-XXXX</span>
+                <div className="text-steel-400">
+                  <p>Fort McMurray: (780) 215-2887</p>
+                  <p>Calgary: (587) 210-2167</p>
+                </div>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-accent-500 mr-2" />

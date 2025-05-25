@@ -139,8 +139,14 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary-950" size="sm">Log In</Button>
-            <Button variant="accent" size="sm">Get a Quote</Button>
+            <a href="tel:+17802152887">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary-950" size="sm">
+                (780) 215-2887
+              </Button>
+            </a>
+            <a href="#contact">
+              <Button variant="accent" size="sm">Get a Quote</Button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -204,8 +210,14 @@ const Navbar: React.FC = () => {
               ))}
 
               <div className="pt-4 space-y-3">
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary-950" fullWidth>Log In</Button>
-                <Button variant="accent" fullWidth>Get a Quote</Button>
+                <a href="tel:+17802152887" className="block w-full">
+                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary-950" fullWidth>
+                    (780) 215-2887
+                  </Button>
+                </a>
+                <a href="#contact" className="block w-full">
+                  <Button variant="accent" fullWidth>Get a Quote</Button>
+                </a>
               </div>
             </div>
           </div>

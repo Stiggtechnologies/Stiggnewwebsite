@@ -1,5 +1,10 @@
-const CLICKUP_API_KEY = import.meta.env.VITE_CLICKUP_API_KEY || '';
+const CLICKUP_API_KEY = import.meta.env.VITE_CLICKUP_API_KEY;
 const CLICKUP_API_URL = 'https://api.clickup.com/api/v2';
+
+// Validate API key before any operations
+if (!CLICKUP_API_KEY) {
+  console.error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
+}
 
 interface ClickUpApi {
   logInteraction: (role: string, data: any) => Promise<void>;
@@ -35,14 +40,14 @@ async function handleClickUpError(response: Response, operation: string) {
 const clickUpApi: ClickUpApi = {
   logInteraction: async (role: string, data: any) => {
     if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
+      throw new Error('ClickUp API key is missing. Please check your environment configuration.');
     }
 
     try {
       const response = await fetch(`${CLICKUP_API_URL}/task`, {
         method: 'POST',
         headers: {
-          'Authorization': CLICKUP_API_KEY,
+          'Authorization': `Bearer ${CLICKUP_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -68,7 +73,7 @@ const clickUpApi: ClickUpApi = {
     try {
       const response = await fetch(`${CLICKUP_API_URL}/list/customers/task?custom_id=${customerId}`, {
         headers: {
-          'Authorization': CLICKUP_API_KEY
+          'Authorization': `Bearer ${CLICKUP_API_KEY}`
         }
       });
       
@@ -90,7 +95,7 @@ const clickUpApi: ClickUpApi = {
     try {
       const response = await fetch(`${CLICKUP_API_URL}/list/leads/task?custom_id=${leadId}`, {
         headers: {
-          'Authorization': CLICKUP_API_KEY
+          'Authorization': `Bearer ${CLICKUP_API_KEY}`
         }
       });
       
@@ -112,7 +117,7 @@ const clickUpApi: ClickUpApi = {
     try {
       const response = await fetch(`${CLICKUP_API_URL}/list/protocols/tasks`, {
         headers: {
-          'Authorization': CLICKUP_API_KEY
+          'Authorization': `Bearer ${CLICKUP_API_KEY}`
         }
       });
       
@@ -134,7 +139,7 @@ const clickUpApi: ClickUpApi = {
     try {
       const response = await fetch(`${CLICKUP_API_URL}/list/it_incidents/tasks`, {
         headers: {
-          'Authorization': CLICKUP_API_KEY
+          'Authorization': `Bearer ${CLICKUP_API_KEY}`
         }
       });
       
@@ -157,7 +162,7 @@ const clickUpApi: ClickUpApi = {
       const response = await fetch(`${CLICKUP_API_URL}/task`, {
         method: 'POST',
         headers: {
-          'Authorization': CLICKUP_API_KEY,
+          'Authorization': `Bearer ${CLICKUP_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -184,7 +189,7 @@ const clickUpApi: ClickUpApi = {
       const response = await fetch(`${CLICKUP_API_URL}/task`, {
         method: 'POST',
         headers: {
-          'Authorization': CLICKUP_API_KEY,
+          'Authorization': `Bearer ${CLICKUP_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -211,7 +216,7 @@ const clickUpApi: ClickUpApi = {
       const response = await fetch(`${CLICKUP_API_URL}/task/${id}`, {
         method: 'PUT',
         headers: {
-          'Authorization': CLICKUP_API_KEY,
+          'Authorization': `Bearer ${CLICKUP_API_KEY}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({

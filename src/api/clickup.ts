@@ -1,3 +1,6 @@
+const CLICKUP_API_KEY = 'pk_32117864_6D9AWD14LU9C6V54035PQHJDL1NBFWLM';
+const CLICKUP_API_URL = 'https://api.clickup.com/api/v2';
+
 interface ClickUpApi {
   logInteraction: (role: string, data: any) => Promise<void>;
   getCustomerData: (customerId: string) => Promise<any>;
@@ -9,56 +12,141 @@ interface ClickUpApi {
   updateITIncident: (id: string, status: string) => Promise<void>;
 }
 
-const mockClickUpApi: ClickUpApi = {
+const clickUpApi: ClickUpApi = {
   logInteraction: async (role: string, data: any) => {
-    console.log(`[ClickUp] Logging ${role} interaction:`, data);
-    return Promise.resolve();
+    try {
+      const response = await fetch(`${CLICKUP_API_URL}/task`, {
+        method: 'POST',
+        headers: {
+          'Authorization': CLICKUP_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: `${role} Interaction`,
+          description: JSON.stringify(data, null, 2),
+          status: 'Open'
+        })
+      });
+      if (!response.ok) throw new Error('Failed to log interaction');
+    } catch (error) {
+      console.error('ClickUp API Error:', error);
+      throw error;
+    }
   },
   getCustomerData: async (customerId: string) => {
-    return Promise.resolve({
-      id: customerId,
-      name: "John Doe",
-      invoices: [
-        { id: "INV-001", status: "Paid", amount: 1500 },
-        { id: "INV-002", status: "Pending", amount: 2000 }
-      ]
-    });
+    try {
+      const response = await fetch(`${CLICKUP_API_URL}/list/customers/task?custom_id=${customerId}`, {
+        headers: {
+          'Authorization': CLICKUP_API_KEY
+        }
+      });
+      if (!response.ok) throw new Error('Failed to get customer data');
+      return response.json();
+    } catch (error) {
+      console.error('ClickUp API Error:', error);
+      throw error;
+    }
   },
   getLeadData: async (leadId: string) => {
-    return Promise.resolve({
-      id: leadId,
-      name: "Jane Smith",
-      company: "ABC Corp",
-      status: "New"
-    });
+    try {
+      const response = await fetch(`${CLICKUP_API_URL}/list/leads/task?custom_id=${leadId}`, {
+        headers: {
+          'Authorization': CLICKUP_API_KEY
+        }
+      });
+      if (!response.ok) throw new Error('Failed to get lead data');
+      return response.json();
+    } catch (error) {
+      console.error('ClickUp API Error:', error);
+      throw error;
+    }
   },
   getSecurityProtocols: async () => {
-    return Promise.resolve({
-      cameras: ["HD-PTZ-2000", "IR-Dome-500", "4K-Bullet-Pro"],
-      accessControl: ["Biometric", "RFID", "PIN"],
-      monitoring: ["24/7", "AI-Enhanced", "Remote"]
-    });
+    try {
+      const response = await fetch(`${CLICKUP_API_URL}/list/protocols/tasks`, {
+        headers: {
+          'Authorization': CLICKUP_API_KEY
+        }
+      });
+      if (!response.ok) throw new Error('Failed to get security protocols');
+      return response.json();
+    } catch (error) {
+      console.error('ClickUp API Error:', error);
+      throw error;
+    }
   },
   getITLogs: async () => {
-    return Promise.resolve({
-      incidents: [
-        { id: "INC-001", status: "Open", type: "Network", priority: "High" },
-        { id: "INC-002", status: "Closed", type: "Software", priority: "Medium" }
-      ]
-    });
+    try {
+      const response = await fetch(`${CLICKUP_API_URL}/list/it_incidents/tasks`, {
+        headers: {
+          'Authorization': CLICKUP_API_KEY
+        }
+      });
+      if (!response.ok) throw new Error('Failed to get IT logs');
+      return response.json();
+    } catch (error) {
+      console.error('ClickUp API Error:', error);
+      throw error;
+    }
   },
   scheduleMeeting: async (leadId: string, date: string) => {
-    console.log(`[ClickUp] Scheduling meeting for lead ${leadId} on ${date}`);
-    return Promise.resolve();
+    try {
+      const response = await fetch(`${CLICKUP_API_URL}/task`, {
+        method: 'POST',
+        headers: {
+          'Authorization': CLICKUP_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: `Sales Meeting - Lead ${leadId}`,
+          due_date: new Date(date).getTime(),
+          status: 'Scheduled'
+        })
+      });
+      if (!response.ok) throw new Error('Failed to schedule meeting');
+    } catch (error) {
+      console.error('ClickUp API Error:', error);
+      throw error;
+    }
   },
   scheduleInstallation: async (date: string) => {
-    console.log(`[ClickUp] Scheduling installation for ${date}`);
-    return Promise.resolve();
+    try {
+      const response = await fetch(`${CLICKUP_API_URL}/task`, {
+        method: 'POST',
+        headers: {
+          'Authorization': CLICKUP_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: 'Security System Installation',
+          due_date: new Date(date).getTime(),
+          status: 'Scheduled'
+        })
+      });
+      if (!response.ok) throw new Error('Failed to schedule installation');
+    } catch (error) {
+      console.error('ClickUp API Error:', error);
+      throw error;
+    }
   },
   updateITIncident: async (id: string, status: string) => {
-    console.log(`[ClickUp] Updating incident ${id} status to ${status}`);
-    return Promise.resolve();
+    try {
+      const response = await fetch(`${CLICKUP_API_URL}/task/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': CLICKUP_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          status: status
+        })
+      });
+      if (!response.ok) throw new Error('Failed to update incident');
+    } catch (error) {
+      console.error('ClickUp API Error:', error);
+      throw error;
+    }
   }
 };
 
-export default mockClickUpApi;
+export default clickUpApi;

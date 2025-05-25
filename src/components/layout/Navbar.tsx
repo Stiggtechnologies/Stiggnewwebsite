@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Button from '../ui/Button';
 import Logo from '../ui/Logo';
@@ -104,7 +105,7 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
-                {item.children ? (
+                {item.children && item.href.startsWith('#') ? (
                   <button 
                     className="flex items-center text-white/90 hover:text-white transition-colors"
                     onClick={() => toggleDropdown(item.name)}
@@ -112,25 +113,33 @@ const Navbar: React.FC = () => {
                     {item.name}
                     <ChevronDown className="ml-1 h-4 w-4" />
                   </button>
+                ) : item.children ? (
+                  <Link 
+                    to={item.href}
+                    className="flex items-center text-white/90 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </Link>
                 ) : (
-                  <a 
-                    href={item.href} 
+                  <Link
+                    to={item.href}
                     className="text-white/90 hover:text-white transition-colors"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 )}
 
                 {item.children && (
                   <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     {item.children.map((child) => (
-                      <a 
+                      <Link
                         key={child.name}
-                        href={child.href}
+                        to={child.href}
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                       >
                         {child.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -187,24 +196,24 @@ const Navbar: React.FC = () => {
                       {openDropdown === item.name && (
                         <div className="pl-4 mt-2 space-y-2">
                           {item.children.map((child) => (
-                            <a 
+                            <Link
                               key={child.name}
-                              href={child.href}
+                              to={child.href}
                               className="block text-white/80 hover:text-white"
                             >
                               {child.name}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       )}
                     </div>
                   ) : (
-                    <a 
-                      href={item.href} 
+                    <Link
+                      to={item.href}
                       className="text-white hover:text-accent-400 transition-colors"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   )}
                 </div>
               ))}

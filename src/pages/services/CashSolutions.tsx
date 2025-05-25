@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Wallet, ShieldCheck, Truck, Clock, Building2, ChartBar } from 'lucide-react';
+import { Wallet, ShieldCheck, Truck, Clock, Building2, BarChart as ChartBar } from 'lucide-react';
 import Button from '../../components/ui/Button';
 
 const CashSolutions: React.FC = () => {

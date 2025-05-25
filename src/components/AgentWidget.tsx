@@ -3,14 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, MessageSquare, User, DollarSign, Shield, Server, Send, Image as ImageIcon } from 'lucide-react';
 import mockClickUpApi from '../api/clickup';
 import mockGoogleDriveApi from '../api/googleDrive';
-
-type AgentRole = "CustomerSupport" | "Sales" | "SecurityExpert" | "SysAdmin";
-
-interface Message {
-  sender: "user" | "agent";
-  text: string;
-  image?: string;
-}
+import { getAgentResponse } from '../api/openai';
+import { agentContext } from '../constants/agentContext';
+import type { AgentRole, Message } from '../types/agent';
 
 const AgentWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,78 +57,19 @@ const AgentWidget: React.FC = () => {
     // Simulate agent response
     setIsLoading(true);
     try {
-      let agentResponse = "";
-      if (activeRole === "CustomerSupport") {
-        if (input.toLowerCase().includes("invoice")) {
-          const customerData = await mockClickUpApi.getCustomerData("CUST-001");
-          const invoice = customerData.invoices[0];
-          if (invoice.status === "Paid") {
-            agentResponse = `Invoice ${invoice.id} is already paid. Amount: $${invoice.amount}.`;
-          } else {
-            agentResponse = "I understand there might be an issue with your invoice. Let me help you with that. Could you please provide more details about what seems incorrect? This will help me better assist you or escalate to the appropriate team if needed.";
-            await mockClickUpApi.logInteraction(activeRole, { issue: input, status: "Escalated" });
-            await mockGoogleDriveApi.saveFile("customer-support-log", { issue: input, status: "Escalated" }, activeRole);
-          }
-        } else {
-          agentResponse = "I'm here to help! Could you please provide more details about your concern? This will help me assist you more effectively. For example, if it's about billing, services, or technical support, I can guide you accordingly.";
-          await mockClickUpApi.logInteraction(activeRole, { issue: input });
-          await mockGoogleDriveApi.saveFile("customer-support-log", { issue: input }, activeRole);
-        }
-      } else if (activeRole === "Sales") {
-        if (input.toLowerCase().includes("small business")) {
-          agentResponse = "That's great! We specialize in security solutions for small businesses. To better understand your needs, could you tell me:\n1. How many locations do you need to secure?\n2. Are you interested in physical security guards, surveillance systems, or both?\n3. Do you have any specific security concerns?\n\nThis will help me recommend the most suitable solutions for your business.";
-          await mockClickUpApi.logInteraction(activeRole, { leadDetails: input, status: "Qualified" });
-          await mockGoogleDriveApi.saveFile("sales-log", { leadDetails: input, status: "Qualified" }, activeRole);
-        } else {
-          agentResponse = "Welcome! I'd be happy to discuss our security solutions. To provide you with the most relevant information, could you tell me about:\n1. The type of business you operate\n2. Your current security challenges\n3. Your budget range for security services\n\nThis will help me tailor our solutions to your specific needs.";
-        }
-      } else if (activeRole === "SecurityExpert") {
-        if (input.toLowerCase().includes("warehouse")) {
-          const driveFile = await mockGoogleDriveApi.getFile("security-manual", activeRole);
-          const protocols = await mockClickUpApi.getSecurityProtocols();
-          agentResponse = `For warehouse security, I recommend a comprehensive solution including:\n
-1. Surveillance: ${protocols.cameras.join(", ")} for complete coverage\n
-2. Access Control: ${protocols.accessControl.join(", ")} systems\n
-3. Monitoring: ${protocols.monitoring.join(", ")}\n\n
-Would you like to schedule a site assessment to customize this solution for your facility?`;
-          await mockClickUpApi.logInteraction(activeRole, { request: input });
-          await mockGoogleDriveApi.saveFile("security-log", { request: input }, activeRole);
-        } else {
-          agentResponse = "I'm here to help design a security solution for you. To provide the best recommendations, could you tell me:\n1. The type of facility you need to secure\n2. Approximate square footage\n3. Any specific security concerns\n4. Current security measures in place";
-        }
-      } else if (activeRole === "SysAdmin") {
-        if (input.toLowerCase().includes("network error")) {
-          const itLogs = await mockClickUpApi.getITLogs();
-          const incident = itLogs.incidents[0];
-          if (incident.status === "Open") {
-            agentResponse = `I've detected an ongoing network issue. Let me help you troubleshoot:
-
-1. First, please try these steps:
-   - Restart your computer
-   - Check your network cable connection
-   - Try connecting to a different network if available
-
-2. If the issue persists, I'll need:
-   - Your system ID
-   - Any error messages you're seeing
-   - When the issue started
-
-I've already escalated this to our IT Ops team for investigation.`;
-            await mockClickUpApi.logInteraction(activeRole, { issue: input, status: "Escalated" });
-            await mockGoogleDriveApi.saveFile("it-incident-log", { issue: input, status: "Escalated" }, activeRole);
-          } else {
-            agentResponse = "Good news! The network issue has been resolved. Please:\n1. Restart your system\n2. Clear your DNS cache\n3. Test your connection\n\nLet me know if you still experience any issues after these steps.";
-          }
-        } else {
-          agentResponse = "I'll help you resolve your IT issue. To better assist you, please provide:\n1. Your system ID or hostname\n2. A detailed description of the problem\n3. Any error messages you're seeing\n4. When the issue started";
-          await mockClickUpApi.logInteraction(activeRole, { issue: input });
-          await mockGoogleDriveApi.saveFile("it-incident-log", { issue: input }, activeRole);
-        }
-      }
+      // Get response from OpenAI
+      const response = await getAgentResponse(activeRole, input, agentContext[activeRole]);
+      
+      // Log interaction
+      await mockClickUpApi.logInteraction(activeRole, { 
+        input, 
+        response,
+        timestamp: new Date().toISOString() 
+      });
 
       setMessages((prev) => ({
         ...prev,
-        [activeRole]: [...prev[activeRole], { sender: "agent", text: agentResponse }],
+        [activeRole]: [...prev[activeRole], { sender: "agent", text: response }],
       }));
     } catch (err) {
       setMessages((prev) => ({

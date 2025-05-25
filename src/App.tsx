@@ -24,6 +24,7 @@ import CaseStudies from './pages/insights/CaseStudies.tsx';
 import WhitePapers from './pages/insights/WhitePapers.tsx';
 import Contact from './pages/Contact.tsx';
 import Projects from './pages/Projects.tsx';
+import AgentWidget from './components/AgentWidget.tsx';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <AgentWidget />
     </Router>
   );
 }

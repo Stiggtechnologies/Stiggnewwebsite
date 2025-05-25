@@ -1,0 +1,1 @@
+[Content of AgentWidget.tsx as provided in the conversation]

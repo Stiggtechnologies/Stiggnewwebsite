@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Car, Phone24, Clock, MapPin, Users } from 'lucide-react';
+import { Shield, Car, Phone as Phone24, Clock, MapPin, Users } from 'lucide-react';
 
 const MobileSecurity = () => {
   return (

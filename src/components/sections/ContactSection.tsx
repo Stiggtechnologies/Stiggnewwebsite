@@ -125,7 +125,8 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-primary-950">Call Us</h3>
-                  <p className="text-steel-600">(780) XXX-XXXX</p>
+                  <p className="text-steel-600">Fort McMurray: (780) 215-2887</p>
+                  <p className="text-steel-600">Calgary: (587) 210-2167</p>
                   <p className="text-steel-500 text-sm">Available 24/7 for emergencies</p>
                 </div>
               </div>
@@ -147,7 +148,12 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-primary-950">Location</h3>
-                  <p className="text-steel-600">Fort McMurray, Alberta</p>
+                  <p className="text-steel-600">Stigg Security@Fort McMurray</p>
+                  <p className="text-steel-600">200 Parent Way, Fort McMurray, AB T9H 5E6</p>
+                  <p className="text-steel-600 mt-4">Stigg Security@Calgary</p>
+                  <p className="text-steel-600">121 8 Ave SE, High River, Alberta T1V 1R8, Canada</p>
+                  <p className="text-steel-600 mt-4">Mailing Address:</p>
+                  <p className="text-steel-600">160 Woodpecker, Fort McMurray, Alberta, T9K 0L4, Canada</p>
                   <p className="text-steel-500 text-sm">Serving clients across Alberta</p>
                 </div>
               </div>

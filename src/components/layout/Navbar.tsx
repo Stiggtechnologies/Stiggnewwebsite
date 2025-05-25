@@ -11,9 +11,49 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { name: 'Home', href: '#' },
-  { name: 'Services', href: '#services' },
-  { name: 'About', href: '#about' },
-  { name: 'Testimonials', href: '#testimonials' },
+  {
+    name: 'Services',
+    href: '#services',
+    children: [
+      { name: 'Security Officers', href: '/services/security-officers' },
+      { name: 'Mobile Security', href: '/services/mobile-security' },
+      { name: 'Risk Consulting', href: '/services/risk-consulting' },
+      { name: 'Technology Solutions', href: '/services/technology' },
+      { name: 'Cash Solutions', href: '/services/cash-solutions' },
+    ]
+  },
+  {
+    name: 'Industries',
+    href: '#industries',
+    children: [
+      { name: 'Aviation', href: '/industries/aviation' },
+      { name: 'Corporate', href: '/industries/corporate' },
+      { name: 'Healthcare', href: '/industries/healthcare' },
+      { name: 'Manufacturing', href: '/industries/manufacturing' },
+      { name: 'Retail', href: '/industries/retail' },
+      { name: 'Government', href: '/industries/government' },
+    ]
+  },
+  {
+    name: 'About',
+    href: '#about',
+    children: [
+      { name: 'Our History', href: '/about/history' },
+      { name: 'Leadership', href: '/about/leadership' },
+      { name: 'Sustainability', href: '/about/sustainability' },
+      { name: 'Careers', href: '/about/careers' },
+    ]
+  },
+  {
+    name: 'Insights',
+    href: '/insights',
+    children: [
+      { name: 'News', href: '/insights/news' },
+      { name: 'Blog', href: '/insights/blog' },
+      { name: 'Case Studies', href: '/insights/case-studies' },
+      { name: 'White Papers', href: '/insights/white-papers' },
+    ]
+  },
   { name: 'Contact', href: '#contact' }
 ];
 

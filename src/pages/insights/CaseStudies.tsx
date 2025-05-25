@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Factory, ShoppingBag, Landmark, Hospital, Shield } from 'lucide-react';
+import { Building2, Factory, ShoppingBag, Landmark, Guitar as Hospital, Shield } from 'lucide-react';
 import Button from '../../components/ui/Button';
 
 const CaseStudies: React.FC = () => {

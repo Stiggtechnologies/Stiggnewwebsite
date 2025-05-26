@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Search, Shield, FileText, ChartBar, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Search, Shield, FileText, BarChart as ChartBar, AlertTriangle, CheckCircle } from 'lucide-react';
 import Button from '../../components/ui/Button';
 
 const RiskAssessment: React.FC = () => {

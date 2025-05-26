@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MessageSquare, User, DollarSign, Shield, Server, Send, Image as ImageIcon } from 'lucide-react';
-import clickUpApi from '../api/clickup';
+import mockClickUpApi from '../api/clickup';
 import mockGoogleDriveApi from '../api/googleDrive';
 import { getAgentResponse } from '../api/openai';
 import { agentContext } from '../constants/agentContext';
@@ -61,7 +61,7 @@ const AgentWidget: React.FC = () => {
       const response = await getAgentResponse(activeRole, input, agentContext[activeRole]);
       
       // Log interaction
-      await clickUpApi.logInteraction(activeRole, { 
+      await mockClickUpApi.logInteraction(activeRole, { 
         input, 
         response,
         timestamp: new Date().toISOString() 

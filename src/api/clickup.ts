@@ -1,11 +1,4 @@
-const CLICKUP_API_KEY = import.meta.env.VITE_CLICKUP_API_KEY;
-const CLICKUP_API_URL = 'https://api.clickup.com/api/v2';
-
-// Validate API key before any operations
-if (!CLICKUP_API_KEY) {
-  console.error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
-}
-
+// Mock ClickUp API for development
 interface ClickUpApi {
   logInteraction: (role: string, data: any) => Promise<void>;
   getCustomerData: (customerId: string) => Promise<any>;
@@ -17,221 +10,54 @@ interface ClickUpApi {
   updateITIncident: (id: string, status: string) => Promise<void>;
 }
 
-async function handleClickUpError(response: Response, operation: string) {
-  const errorText = await response.text();
-  let errorMessage = `ClickUp ${operation} failed with status ${response.status}`;
-  
-  try {
-    const errorJson = JSON.parse(errorText);
-    errorMessage += `: ${errorJson.err || errorText}`;
-  } catch {
-    errorMessage += `: ${errorText}`;
-  }
-
-  if (response.status === 401) {
-    errorMessage = 'Invalid ClickUp API key. Please check your credentials.';
-  } else if (response.status === 429) {
-    errorMessage = 'ClickUp API rate limit exceeded. Please try again later.';
-  }
-
-  throw new Error(errorMessage);
-}
-
-const clickUpApi: ClickUpApi = {
+const mockClickUpApi: ClickUpApi = {
   logInteraction: async (role: string, data: any) => {
-    if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key is missing. Please check your environment configuration.');
-    }
-
-    try {
-      const response = await fetch(`${CLICKUP_API_URL}/task`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${CLICKUP_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: `${role} Interaction`,
-          description: JSON.stringify(data, null, 2),
-          status: 'Open'
-        })
-      });
-
-      if (!response.ok) {
-        await handleClickUpError(response, 'log interaction');
-      }
-    } catch (error) {
-      console.error('ClickUp API Error:', error);
-      throw error;
-    }
+    console.log(`[Mock ClickUp] Logging interaction for ${role}:`, data);
+    return Promise.resolve();
   },
   getCustomerData: async (customerId: string) => {
-    if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
-    }
-
-    try {
-      const response = await fetch(`${CLICKUP_API_URL}/list/customers/task?custom_id=${customerId}`, {
-        headers: {
-          'Authorization': `Bearer ${CLICKUP_API_KEY}`
-        }
-      });
-      
-      if (!response.ok) {
-        await handleClickUpError(response, 'get customer data');
-      }
-      
-      return response.json();
-    } catch (error) {
-      console.error('ClickUp API Error:', error);
-      throw error;
-    }
+    console.log(`[Mock ClickUp] Getting customer data for ID: ${customerId}`);
+    return Promise.resolve({
+      id: customerId,
+      name: "Sample Customer",
+      status: "Active",
+      services: ["Security Guards", "Camera Systems"]
+    });
   },
   getLeadData: async (leadId: string) => {
-    if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
-    }
-
-    try {
-      const response = await fetch(`${CLICKUP_API_URL}/list/leads/task?custom_id=${leadId}`, {
-        headers: {
-          'Authorization': `Bearer ${CLICKUP_API_KEY}`
-        }
-      });
-      
-      if (!response.ok) {
-        await handleClickUpError(response, 'get lead data');
-      }
-      
-      return response.json();
-    } catch (error) {
-      console.error('ClickUp API Error:', error);
-      throw error;
-    }
+    console.log(`[Mock ClickUp] Getting lead data for ID: ${leadId}`);
+    return Promise.resolve({
+      id: leadId,
+      status: "New",
+      interest: ["Alarm Systems", "Guard Services"]
+    });
   },
   getSecurityProtocols: async () => {
-    if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
-    }
-
-    try {
-      const response = await fetch(`${CLICKUP_API_URL}/list/protocols/tasks`, {
-        headers: {
-          'Authorization': `Bearer ${CLICKUP_API_KEY}`
-        }
-      });
-      
-      if (!response.ok) {
-        await handleClickUpError(response, 'get security protocols');
-      }
-      
-      return response.json();
-    } catch (error) {
-      console.error('ClickUp API Error:', error);
-      throw error;
-    }
+    console.log('[Mock ClickUp] Getting security protocols');
+    return Promise.resolve([
+      { id: "1", name: "Emergency Response", status: "Active" },
+      { id: "2", name: "Access Control", status: "Active" }
+    ]);
   },
   getITLogs: async () => {
-    if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
-    }
-
-    try {
-      const response = await fetch(`${CLICKUP_API_URL}/list/it_incidents/tasks`, {
-        headers: {
-          'Authorization': `Bearer ${CLICKUP_API_KEY}`
-        }
-      });
-      
-      if (!response.ok) {
-        await handleClickUpError(response, 'get IT logs');
-      }
-      
-      return response.json();
-    } catch (error) {
-      console.error('ClickUp API Error:', error);
-      throw error;
-    }
+    console.log('[Mock ClickUp] Getting IT logs');
+    return Promise.resolve([
+      { id: "1", type: "System Update", status: "Completed" },
+      { id: "2", type: "Security Alert", status: "Resolved" }
+    ]);
   },
   scheduleMeeting: async (leadId: string, date: string) => {
-    if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
-    }
-
-    try {
-      const response = await fetch(`${CLICKUP_API_URL}/task`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${CLICKUP_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: `Sales Meeting - Lead ${leadId}`,
-          due_date: new Date(date).getTime(),
-          status: 'Scheduled'
-        })
-      });
-      
-      if (!response.ok) {
-        await handleClickUpError(response, 'schedule meeting');
-      }
-    } catch (error) {
-      console.error('ClickUp API Error:', error);
-      throw error;
-    }
+    console.log(`[Mock ClickUp] Scheduling meeting for lead ${leadId} on ${date}`);
+    return Promise.resolve();
   },
   scheduleInstallation: async (date: string) => {
-    if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
-    }
-
-    try {
-      const response = await fetch(`${CLICKUP_API_URL}/task`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${CLICKUP_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: 'Security System Installation',
-          due_date: new Date(date).getTime(),
-          status: 'Scheduled'
-        })
-      });
-      
-      if (!response.ok) {
-        await handleClickUpError(response, 'schedule installation');
-      }
-    } catch (error) {
-      console.error('ClickUp API Error:', error);
-      throw error;
-    }
+    console.log(`[Mock ClickUp] Scheduling installation for ${date}`);
+    return Promise.resolve();
   },
   updateITIncident: async (id: string, status: string) => {
-    if (!CLICKUP_API_KEY) {
-      throw new Error('ClickUp API key not configured. Please set VITE_CLICKUP_API_KEY in your environment.');
-    }
-
-    try {
-      const response = await fetch(`${CLICKUP_API_URL}/task/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${CLICKUP_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          status: status
-        })
-      });
-      
-      if (!response.ok) {
-        await handleClickUpError(response, 'update incident');
-      }
-    } catch (error) {
-      console.error('ClickUp API Error:', error);
-      throw error;
-    }
+    console.log(`[Mock ClickUp] Updating incident ${id} to status: ${status}`);
+    return Promise.resolve();
   }
 };
 
-export default clickUpApi;
+export default mockClickUpApi;

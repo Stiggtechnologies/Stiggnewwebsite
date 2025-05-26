@@ -1,111 +1,184 @@
 import React from 'react';
-import { Shield } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Shield, Users, Clock, Award, Book, CheckCircle } from 'lucide-react';
+import Button from '../../components/ui/Button';
 
 const SecurityOfficers = () => {
+  const services = [
+    {
+      title: "Static Security",
+      description: "Professional security presence for buildings and facilities",
+      icon: <Shield className="h-6 w-6" />,
+    },
+    {
+      title: "Event Security",
+      description: "Specialized security teams for events and gatherings",
+      icon: <Users className="h-6 w-6" />,
+    },
+    {
+      title: "24/7 Coverage",
+      description: "Round-the-clock security personnel availability",
+      icon: <Clock className="h-6 w-6" />,
+    },
+    {
+      title: "Training Programs",
+      description: "Continuous professional development for security staff",
+      icon: <Book className="h-6 w-6" />,
+    },
+    {
+      title: "Certified Officers",
+      description: "Licensed and certified security professionals",
+      icon: <Award className="h-6 w-6" />,
+    },
+    {
+      title: "Quality Assurance",
+      description: "Regular performance monitoring and evaluation",
+      icon: <CheckCircle className="h-6 w-6" />,
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
-      <div className="relative bg-gray-900 py-24">
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/images/guard-2.jpg"
-            alt="Security officer on duty"
-            className="w-full h-full object-cover opacity-20"
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Shield className="h-16 w-16 text-blue-500 mx-auto mb-6" />
-            <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+      <section className="relative py-20 bg-primary-950">
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/220365/pexels-photo-220365.jpeg')] bg-cover bg-center opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Professional Security Officers
             </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-xl text-gray-300">
+            <p className="text-xl text-steel-300 mb-8">
               Highly trained security personnel delivering exceptional protection services
               tailored to your specific needs.
             </p>
+            <Button variant="accent" size="lg">
+              Request Security Staff
+            </Button>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Services Overview */}
-      <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Comprehensive Security Solutions
+      {/* Services Grid */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold text-primary-950 mb-4">
+              Our Security Services
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Our security officers are more than just guards – they are highly trained
-              professionals who understand the complexities of modern security challenges.
-              With extensive training and experience, they provide vigilant protection
-              while maintaining a professional and courteous demeanor.
+            <p className="text-lg text-steel-600">
+              Professional security personnel trained to handle any situation with expertise and professionalism.
             </p>
-            <ul className="space-y-4 text-gray-600">
-              <li className="flex items-start">
-                <Shield className="h-6 w-6 text-blue-500 mr-3 flex-shrink-0" />
-                <span>24/7 on-site security presence</span>
-              </li>
-              <li className="flex items-start">
-                <Shield className="h-6 w-6 text-blue-500 mr-3 flex-shrink-0" />
-                <span>Access control and visitor management</span>
-              </li>
-              <li className="flex items-start">
-                <Shield className="h-6 w-6 text-blue-500 mr-3 flex-shrink-0" />
-                <span>Emergency response and crisis management</span>
-              </li>
-              <li className="flex items-start">
-                <Shield className="h-6 w-6 text-blue-500 mr-3 flex-shrink-0" />
-                <span>Regular security assessments and reporting</span>
-              </li>
-            </ul>
           </div>
-          <div className="relative">
-            <img
-              src="/images/guard-3.jpg"
-              alt="Security officer monitoring"
-              className="rounded-lg shadow-xl w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </div>
 
-      {/* Training & Certification */}
-      <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Training & Certification
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Professional Training
-              </h3>
-              <p className="text-gray-600">
-                Our officers undergo rigorous training programs covering security
-                protocols, emergency response, and customer service.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white p-6 rounded-xl shadow-soft border border-steel-100"
+              >
+                <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center text-primary-600 mb-4">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-primary-950 mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-steel-600">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-steel-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-primary-950 mb-6">
+                Why Choose Our Security Officers
+              </h2>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="w-6 h-6 rounded-full bg-accent-500 flex items-center justify-center text-white mt-1 mr-3 flex-shrink-0">
+                    <span className="text-sm">1</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-primary-900 mb-2">
+                      Extensive Training
+                    </h3>
+                    <p className="text-steel-600">
+                      Our officers undergo rigorous training in security protocols, emergency response, and customer service.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 rounded-full bg-accent-500 flex items-center justify-center text-white mt-1 mr-3 flex-shrink-0">
+                    <span className="text-sm">2</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-primary-900 mb-2">
+                      Professional Standards
+                    </h3>
+                    <p className="text-steel-600">
+                      Licensed and certified security professionals with ongoing training and development.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 rounded-full bg-accent-500 flex items-center justify-center text-white mt-1 mr-3 flex-shrink-0">
+                    <span className="text-sm">3</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-primary-900 mb-2">
+                      Quality Assurance
+                    </h3>
+                    <p className="text-steel-600">
+                      Regular performance evaluations and continuous improvement programs.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Industry Certifications
-              </h3>
-              <p className="text-gray-600">
-                All security personnel maintain required certifications and undergo
-                regular skill assessments and updates.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Continuous Development
-              </h3>
-              <p className="text-gray-600">
-                Regular training updates and professional development ensure our team
-                stays current with industry best practices.
-              </p>
+            <div className="relative">
+              <img 
+                src="https://images.pexels.com/photos/220365/pexels-photo-220365.jpeg"
+                alt="Security officer on duty"
+                className="rounded-xl shadow-xl"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg">
+                <p className="text-4xl font-bold text-primary-600">500+</p>
+                <p className="text-steel-600">Officers deployed</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="bg-primary-900 rounded-2xl p-12 text-center">
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Ready to Enhance Your Security?
+            </h2>
+            <p className="text-xl text-steel-300 mb-8 max-w-2xl mx-auto">
+              Contact us to discuss your security staffing needs and discover how our professional officers can protect your assets.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button variant="accent" size="lg">
+                Get Started
+              </Button>
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary-950" size="lg">
+                Learn More
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

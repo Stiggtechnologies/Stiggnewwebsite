@@ -102,7 +102,7 @@ const HeroSection: React.FC = () => {
             <div className="relative w-full overflow-hidden rounded-xl shadow-2xl">
               <div className="aspect-[4/3] relative">
                 <img
-                  src={new URL('/images/guard-3.jpg', import.meta.url).href}
+                  src="/images/guard-3.jpg"
                   alt="Professional security guard in uniform" 
                   className="w-full h-full object-cover"
                 />

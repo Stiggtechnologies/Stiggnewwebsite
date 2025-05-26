@@ -17,7 +17,6 @@ const navItems: NavItem[] = [
     name: 'Services',
     href: '#services',
     children: [
-      { name: 'Security Officers', href: '/services/security-officers' },
       { name: 'Security Guards', href: '/services/security-guards' },
       { name: 'Alarm Monitoring', href: '/services/alarm-monitoring' },
       { name: 'Camera Systems', href: '/services/camera-systems' },

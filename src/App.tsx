@@ -3,7 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar.tsx';
 import Footer from './components/layout/Footer.tsx';
 import HomePage from './pages/HomePage.tsx';
-import SecurityOfficers from './pages/services/SecurityOfficers.tsx';
+import SecurityGuards from './pages/services/SecurityGuards.tsx';
+import AlarmMonitoring from './pages/services/AlarmMonitoring.tsx';
+import CameraSystems from './pages/services/CameraSystems.tsx';
+import RiskAssessment from './pages/services/RiskAssessment.tsx';
+import PrivateInvestigation from './pages/services/PrivateInvestigation.tsx';
 import MobileSecurity from './pages/services/MobileSecurity.tsx';
 import RiskConsulting from './pages/services/RiskConsulting.tsx';
 import Technology from './pages/services/Technology.tsx';
@@ -38,7 +42,6 @@ function App() {
           <Route path="/services/camera-systems" element={<CameraSystems />} />
           <Route path="/services/risk-assessment" element={<RiskAssessment />} />
           <Route path="/services/private-investigation" element={<PrivateInvestigation />} />
-          <Route path="/services/security-officers" element={<SecurityOfficers />} />
           <Route path="/services/mobile-security" element={<MobileSecurity />} />
           <Route path="/services/risk-consulting" element={<RiskConsulting />} />
           <Route path="/services/technology" element={<Technology />} />

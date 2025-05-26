@@ -161,7 +161,7 @@ const ContactSection: React.FC = () => {
             
             <div className="rounded-xl overflow-hidden h-64 shadow-lg">
               <img 
-                src={new URL('/images/guard-2.jpg', import.meta.url).href}
+                src="/images/guard-2.jpg"
                 alt="Security guard on duty" 
                 className="w-full h-full object-cover"
               />

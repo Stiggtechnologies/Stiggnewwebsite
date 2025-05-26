@@ -36,7 +36,7 @@ const AboutSection: React.FC = () => {
             <div className="relative rounded-xl overflow-hidden shadow-xl">
               <div className="aspect-[4/5]">
                 <img 
-                  src={new URL('/images/team.jpg', import.meta.url).href}
+                  src="/images/team.jpg"
                   alt="Security professional in uniform" 
                   className="w-full h-full object-cover"
                 />

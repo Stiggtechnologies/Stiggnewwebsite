@@ -45,11 +45,11 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><a href="#services" className="text-steel-400 hover:text-white transition-colors">Security Guards</a></li>
-              <li><a href="#services" className="text-steel-400 hover:text-white transition-colors">Alarm Monitoring</a></li>
-              <li><a href="#services" className="text-steel-400 hover:text-white transition-colors">Camera Systems</a></li>
-              <li><a href="#services" className="text-steel-400 hover:text-white transition-colors">Risk Assessment</a></li>
-              <li><a href="#services" className="text-steel-400 hover:text-white transition-colors">Private Investigation</a></li>
+              <li><a href="/services/security-guards" className="text-steel-400 hover:text-white transition-colors">Security Guards</a></li>
+              <li><a href="/services/alarm-monitoring" className="text-steel-400 hover:text-white transition-colors">Alarm Monitoring</a></li>
+              <li><a href="/services/camera-systems" className="text-steel-400 hover:text-white transition-colors">Camera Systems</a></li>
+              <li><a href="/services/risk-assessment" className="text-steel-400 hover:text-white transition-colors">Risk Assessment</a></li>
+              <li><a href="/services/private-investigation" className="text-steel-400 hover:text-white transition-colors">Private Investigation</a></li>
             </ul>
           </div>
           

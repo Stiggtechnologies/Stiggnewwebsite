@@ -33,6 +33,11 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/services/security-guards" element={<SecurityGuards />} />
+          <Route path="/services/alarm-monitoring" element={<AlarmMonitoring />} />
+          <Route path="/services/camera-systems" element={<CameraSystems />} />
+          <Route path="/services/risk-assessment" element={<RiskAssessment />} />
+          <Route path="/services/private-investigation" element={<PrivateInvestigation />} />
           <Route path="/services/security-officers" element={<SecurityOfficers />} />
           <Route path="/services/mobile-security" element={<MobileSecurity />} />
           <Route path="/services/risk-consulting" element={<RiskConsulting />} />

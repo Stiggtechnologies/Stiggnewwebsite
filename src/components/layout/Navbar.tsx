@@ -18,6 +18,11 @@ const navItems: NavItem[] = [
     href: '#services',
     children: [
       { name: 'Security Officers', href: '/services/security-officers' },
+      { name: 'Security Guards', href: '/services/security-guards' },
+      { name: 'Alarm Monitoring', href: '/services/alarm-monitoring' },
+      { name: 'Camera Systems', href: '/services/camera-systems' },
+      { name: 'Risk Assessment', href: '/services/risk-assessment' },
+      { name: 'Private Investigation', href: '/services/private-investigation' },
       { name: 'Mobile Security', href: '/services/mobile-security' },
       { name: 'Risk Consulting', href: '/services/risk-consulting' },
       { name: 'Technology Solutions', href: '/services/technology' },

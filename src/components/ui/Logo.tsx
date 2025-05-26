@@ -5,7 +5,7 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className = 'h-8' }) => {
-  return <img src="/images/stigg.svg" alt="Stigg Security" className={className} />;
+  return <img src="/images/Stigg.png" alt="Stigg Security" className={className} />;
 };
 
 export default Logo;

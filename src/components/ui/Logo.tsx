@@ -1,4 +1,5 @@
 import React from 'react';
+import { Shield } from 'lucide-react';
 
 interface LogoProps {
   className?: string;
@@ -6,11 +7,10 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ className = 'h-8' }) => {
   return (
-    <img 
-      src="https://raw.githubusercontent.com/stackblitz/webcontainer-core/main/assets/stigg.svg" 
-      alt="Stigg Security" 
-      className={className}
-    />
+    <div className="flex items-center space-x-2">
+      <Shield className={`text-accent-500 ${className}`} />
+      <span className="font-bold text-xl text-white">Stigg</span>
+    </div>
   );
 };
 

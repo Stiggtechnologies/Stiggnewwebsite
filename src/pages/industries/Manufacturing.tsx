@@ -1,8 +1,12 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { Shield } from 'lucide-react';
 
 const Manufacturing = () => {
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/industries/manufacturing\']} />
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div className="relative bg-blue-900 text-white py-24">
@@ -73,6 +77,7 @@ const Manufacturing = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

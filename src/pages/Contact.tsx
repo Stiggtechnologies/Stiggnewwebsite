@@ -1,3 +1,5 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, AlertCircle } from 'lucide-react';
@@ -129,6 +131,8 @@ const Contact: React.FC = () => {
   ];
 
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/contact\']} />
     <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-primary-950">
@@ -402,6 +406,7 @@ const Contact: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

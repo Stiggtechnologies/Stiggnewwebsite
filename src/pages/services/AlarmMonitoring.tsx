@@ -1,3 +1,5 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Bell, Shield, Clock, Wifi, Phone, AlertTriangle } from 'lucide-react';
@@ -38,6 +40,8 @@ const AlarmMonitoring: React.FC = () => {
   ];
 
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/services/alarm-monitoring\']} />
     <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-primary-950">
@@ -179,6 +183,7 @@ const AlarmMonitoring: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

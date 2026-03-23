@@ -1,3 +1,5 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Camera, Lock, Wifi, Server, Bell } from 'lucide-react';
@@ -38,6 +40,8 @@ const Technology: React.FC = () => {
   ];
 
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/services/technology\']} />
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-primary-950">
@@ -181,6 +185,7 @@ const Technology: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

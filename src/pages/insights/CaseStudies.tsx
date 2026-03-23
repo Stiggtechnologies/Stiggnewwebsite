@@ -1,3 +1,5 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, Factory, ShoppingBag, Landmark, Guitar as Hospital, Shield } from 'lucide-react';
@@ -38,6 +40,8 @@ const CaseStudies: React.FC = () => {
   ];
 
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/insights/case-studies\']} />
     <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-primary-950">
@@ -174,6 +178,7 @@ const CaseStudies: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

@@ -1,3 +1,5 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Wallet, ShieldCheck, Truck, Clock, Building2, BarChart as ChartBar } from 'lucide-react';
@@ -38,6 +40,8 @@ const CashSolutions: React.FC = () => {
   ];
 
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/services/cash-solutions\']} />
     <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-primary-950">
@@ -121,6 +125,7 @@ const CashSolutions: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

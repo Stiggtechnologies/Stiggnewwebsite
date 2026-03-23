@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.stigg.ca/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.stigg.ca/services/security-guards</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.stigg.ca/services/alarm-monitoring</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.stigg.ca/services/camera-systems</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.stigg.ca/services/risk-assessment</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.stigg.ca/services/risk-consulting</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.stigg.ca/services/private-investigation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.stigg.ca/services/mobile-security</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.stigg.ca/services/technology</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/services/cash-solutions</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/industries/aviation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/industries/corporate</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/industries/healthcare</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/industries/manufacturing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/industries/retail</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/industries/government</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/about/history</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.stigg.ca/about/leadership</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.stigg.ca/about/sustainability</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.stigg.ca/about/careers</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.stigg.ca/insights/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.stigg.ca/insights/news</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/insights/case-studies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.stigg.ca/insights/white-papers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.stigg.ca/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>

@@ -1,8 +1,12 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { Shield, Car, Phone as Phone24, Clock, MapPin, Users } from 'lucide-react';
 
 const MobileSecurity = () => {
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/services/mobile-security\']} />
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="relative bg-gray-900 text-white py-24">
@@ -103,6 +107,7 @@ const MobileSecurity = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,8 +1,12 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { Shield } from 'lucide-react';
 
 const Government = () => {
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/industries/government\']} />
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center">
@@ -53,6 +57,7 @@ const Government = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,3 +1,5 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, User, Tag, ArrowRight } from 'lucide-react';
@@ -41,6 +43,8 @@ const Blog: React.FC = () => {
   ];
 
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/insights/blog\']} />
     <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-primary-950">
@@ -161,6 +165,7 @@ const Blog: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

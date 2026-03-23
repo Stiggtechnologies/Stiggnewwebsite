@@ -1,3 +1,5 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Camera, Shield, Eye, Wifi, Server, Settings } from 'lucide-react';
@@ -38,6 +40,8 @@ const CameraSystems: React.FC = () => {
   ];
 
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/services/camera-systems\']} />
     <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-primary-950">
@@ -179,6 +183,7 @@ const CameraSystems: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

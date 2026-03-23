@@ -1,8 +1,12 @@
+import { SEO } from '@/components/seo/SEO';
+import { SEO_CONFIG } from '@/seo-config';
 import React from 'react';
 import { Shield } from 'lucide-react';
 
 const RiskConsulting = () => {
   return (
+    <>
+      <SEO {...SEO_CONFIG[\'/services/risk-consulting\']} />
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="bg-gray-50 py-20">
@@ -102,6 +106,7 @@ const RiskConsulting = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

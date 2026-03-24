@@ -77,13 +77,14 @@ export const LOCAL_BUSINESS_SCHEMA = {
   logo: 'https://www.stigg.ca/logo.png',
   image: 'https://www.stigg.ca/og-image.jpg',
   description:
-    'Alberta-licensed professional security company providing security guards, alarm monitoring, camera systems, mobile patrols, and risk consulting across Alberta since 2010.',
+    'Alberta-licensed professional security company providing security guards, alarm monitoring, camera systems, mobile patrols, and risk consulting across Alberta and Canada since 2010.',
   foundingDate: '2010',
   areaServed: [
     { '@type': 'City', name: 'Fort McMurray', containedInPlace: { '@type': 'Province', name: 'Alberta' } },
     { '@type': 'City', name: 'Calgary', containedInPlace: { '@type': 'Province', name: 'Alberta' } },
     { '@type': 'City', name: 'High River', containedInPlace: { '@type': 'Province', name: 'Alberta' } },
     { '@type': 'Province', name: 'Alberta' },
+    { '@type': 'Country', name: 'Canada' },
   ],
   location: [
     {
@@ -146,10 +147,10 @@ export const HOMEPAGE_FAQ_SCHEMA = {
     },
     {
       '@type': 'Question',
-      name: 'What areas of Alberta does Stigg Security serve?',
+      name: 'What areas does Stigg Security serve?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Stigg Security serves clients across all of Alberta including Fort McMurray, Calgary, High River, and surrounding regions. We specialize in industrial and oilsands security in Northern Alberta.',
+        text: 'Stigg Security serves clients across all of Alberta including Fort McMurray, Calgary, High River, and surrounding regions, and supports select projects across Canada.',
       },
     },
     {

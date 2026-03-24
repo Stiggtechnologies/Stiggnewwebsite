@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
               </h1>
               
               <p className="text-xl text-steel-300 mb-8 leading-relaxed">
-                Licensed since 2010, Stigg Security Inc. protects businesses across Alberta — Fort McMurray, Calgary, High River and beyond — with tailored security solutions.
+                Licensed since 2010, Stigg Security Inc. protects businesses across Alberta — Fort McMurray, Calgary, High River and beyond — with select projects across Canada.
               </p>
               
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-10">

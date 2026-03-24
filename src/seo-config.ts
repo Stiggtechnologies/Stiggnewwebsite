@@ -4,7 +4,7 @@
 export const SEO_CONFIG: Record<string, { title: string; description: string; canonical: string }> = {
   '/': {
     title: 'Security Company Alberta | Stigg Security Inc.',
-    description: "Alberta's trusted security company since 2010. Licensed security guards, mobile patrols, alarm monitoring & camera systems across Fort McMurray, Calgary & all of Alberta.",
+    description: "Alberta's trusted security company since 2010. Licensed security guards, mobile patrols, alarm monitoring & camera systems across Alberta — with select projects across Canada.",
     canonical: '/',
   },
   '/services/security-guards': {

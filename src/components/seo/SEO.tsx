@@ -1,5 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+import { SEO_CONFIG } from '../../seo-config';
 
 interface SEOProps {
   title: string;
@@ -67,6 +69,18 @@ export const SEO: React.FC<SEOProps> = ({
   );
 };
 
+/**
+ * AutoSEO: automatically injects SEO meta tags based on the current route.
+ * Drop <AutoSEO /> into any page component — no props needed.
+ * Falls back silently if the current path has no SEO config.
+ */
+export const AutoSEO: React.FC<{ jsonLd?: object | object[] }> = ({ jsonLd }) => {
+  const { pathname } = useLocation();
+  const config = SEO_CONFIG[pathname];
+  if (!config) return null;
+  return <SEO {...config} jsonLd={jsonLd} />;
+};
+
 // ── Shared structured data ────────────────────────────────────
 
 export const LOCAL_BUSINESS_SCHEMA = {
@@ -77,7 +91,7 @@ export const LOCAL_BUSINESS_SCHEMA = {
   logo: 'https://www.stigg.ca/logo.png',
   image: 'https://www.stigg.ca/og-image.jpg',
   description:
-    'Alberta-licensed professional security company providing security guards, alarm monitoring, camera systems, mobile patrols, and risk consulting across Alberta and Canada since 2010.',
+    "Alberta-licensed professional security company providing security guards, alarm monitoring, camera systems, mobile patrols, and risk consulting across Alberta and Canada since 2010.",
   foundingDate: '2010',
   areaServed: [
     { '@type': 'City', name: 'Fort McMurray', containedInPlace: { '@type': 'Province', name: 'Alberta' } },
@@ -89,7 +103,7 @@ export const LOCAL_BUSINESS_SCHEMA = {
   location: [
     {
       '@type': 'Place',
-      name: 'Stigg Security — High River',
+      name: 'Stigg Security \u2014 High River',
       address: {
         '@type': 'PostalAddress',
         streetAddress: '121 8 Ave SE',
@@ -101,7 +115,7 @@ export const LOCAL_BUSINESS_SCHEMA = {
     },
     {
       '@type': 'Place',
-      name: 'Stigg Security — Fort McMurray',
+      name: 'Stigg Security \u2014 Fort McMurray',
       address: {
         '@type': 'PostalAddress',
         streetAddress: '160 Woodpecker',

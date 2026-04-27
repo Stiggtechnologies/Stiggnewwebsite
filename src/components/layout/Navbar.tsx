@@ -153,7 +153,7 @@ const Navbar: React.FC = () => {
 
           <div className="hidden md:flex items-center space-x-4">
             <a href="tel:+17802152887">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary-950" size="sm">
+              <Button variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-primary-950" size="sm">
                 (780) 215-2887
               </Button>
             </a>
@@ -224,7 +224,7 @@ const Navbar: React.FC = () => {
 
               <div className="pt-4 space-y-3">
                 <a href="tel:+17802152887" className="block w-full">
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary-950" fullWidth>
+                  <Button variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-primary-950" fullWidth>
                     (780) 215-2887
                   </Button>
                 </a>

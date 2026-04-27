@@ -64,7 +64,7 @@ const HeroSection: React.FC = () => {
                 <Button size="lg" variant="accent">
                   Get a Free Quote
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary-950" size="lg">
+                <Button variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-primary-950" size="lg">
                   Our Services
                 </Button>
               </div>
@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
               </div>
             </motion.div>
           </div>
-
+          
           <motion.div 
             className="lg:col-span-5 relative"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -100,12 +100,13 @@ const HeroSection: React.FC = () => {
           >
             <div className="relative w-full overflow-hidden rounded-xl shadow-2xl">
               <div className="aspect-[4/3] relative">
-                <img 
+                <img
                   src="https://images.pexels.com/photos/5473955/pexels-photo-5473955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   alt="Professional security guard in uniform" 
                   className="w-full h-full object-cover"
                 />
               </div>
+              
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary-950/60 via-transparent to-transparent"></div>
               

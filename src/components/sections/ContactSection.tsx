@@ -27,74 +27,55 @@ const ContactSection: React.FC = () => {
     service: '',
     message: ''
   });
-  
+
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  
+
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     }
-    
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
     }
-    
     if (!formData.service) {
       newErrors.service = 'Please select a service';
     }
-    
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
+    setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error when user types
     if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: undefined
-      }));
+      setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setIsSubmitting(true);
-      
       // Simulate API call
       setTimeout(() => {
         setIsSubmitting(false);
         setSubmitted(true);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: ''
-        });
-        
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
         // Reset submission state after 5 seconds
         setTimeout(() => {
           setSubmitted(false);
@@ -117,7 +98,7 @@ const ContactSection: React.FC = () => {
             <p className="text-lg text-steel-700 mb-8">
               Have questions about our security services? Contact us today for a free consultation and personalized security assessment.
             </p>
-            
+
             <div className="space-y-6 mb-8">
               <div className="flex items-start">
                 <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary-50 flex items-center justify-center text-primary-600 mr-4">
@@ -130,7 +111,7 @@ const ContactSection: React.FC = () => {
                   <p className="text-steel-500 text-sm">Available 24/7 for emergencies</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary-50 flex items-center justify-center text-primary-600 mr-4">
                   <Mail className="h-5 w-5" />
@@ -141,7 +122,7 @@ const ContactSection: React.FC = () => {
                   <p className="text-steel-500 text-sm">We respond within 24 hours</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary-50 flex items-center justify-center text-primary-600 mr-4">
                   <MapPin className="h-5 w-5" />
@@ -158,16 +139,16 @@ const ContactSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="rounded-xl overflow-hidden h-64 shadow-lg">
               <img 
-                src="/images/guard-2.jpg"
+                src="https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="Security guard on duty" 
                 className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -176,7 +157,7 @@ const ContactSection: React.FC = () => {
           >
             <div className="bg-white rounded-xl shadow-soft-lg border border-steel-100 p-8">
               <h3 className="text-2xl font-bold text-primary-950 mb-6">Request a Free Quote</h3>
-              
+
               {submitted ? (
                 <motion.div 
                   className="bg-success-50 border border-success-200 rounded-lg p-4 text-success-800 flex items-start"
@@ -216,7 +197,7 @@ const ContactSection: React.FC = () => {
                       </p>
                     )}
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-steel-700 mb-1">
@@ -238,7 +219,7 @@ const ContactSection: React.FC = () => {
                         </p>
                       )}
                     </div>
-                    
+
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-steel-700 mb-1">
                         Phone Number
@@ -260,7 +241,7 @@ const ContactSection: React.FC = () => {
                       )}
                     </div>
                   </div>
-                  
+
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-steel-700 mb-1">
                       Service Interested In
@@ -288,7 +269,7 @@ const ContactSection: React.FC = () => {
                       </p>
                     )}
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-steel-700 mb-1">
                       Message
@@ -309,11 +290,11 @@ const ContactSection: React.FC = () => {
                       </p>
                     )}
                   </div>
-                  
-                  <Button 
-                    type="submit" 
-                    variant="accent" 
-                    size="lg" 
+
+                  <Button
+                    type="submit"
+                    variant="accent"
+                    size="lg"
                     fullWidth
                     disabled={isSubmitting}
                     className="flex items-center justify-center"

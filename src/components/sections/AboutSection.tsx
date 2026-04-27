@@ -36,12 +36,11 @@ const AboutSection: React.FC = () => {
             <div className="relative rounded-xl overflow-hidden shadow-xl">
               <div className="aspect-[4/5]">
                 <img 
-                  src="/images/team.jpg"
+                  src="https://images.pexels.com/photos/3205735/pexels-photo-3205735.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   alt="Security professional in uniform" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              
               <div className="absolute inset-0 bg-gradient-to-t from-primary-950/70 via-transparent to-transparent"></div>
               
               {/* Experience badge */}
@@ -55,7 +54,7 @@ const AboutSection: React.FC = () => {
                 Since 2010
               </motion.div>
             </div>
-            
+
             {/* Stats card */}
             <motion.div 
               className="absolute -bottom-8 -left-8 bg-white rounded-lg shadow-xl p-6 border border-steel-100"
@@ -76,7 +75,7 @@ const AboutSection: React.FC = () => {
               </div>
             </motion.div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -84,18 +83,16 @@ const AboutSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-primary-950 mb-6">About Stigg Security Inc.</h2>
-            
             <p className="text-lg text-steel-700 mb-6 leading-relaxed">
               Founded in 2010, Stigg Security has grown to become one of Alberta's most trusted security providers. Based in Fort McMurray, we deliver comprehensive protection solutions for businesses, industrial sites, and residential properties across the province.
             </p>
-            
             <p className="text-lg text-steel-700 mb-8 leading-relaxed">
               Our team consists of highly-trained security professionals who combine experience with cutting-edge technology to ensure the highest level of protection for our clients. We pride ourselves on our commitment to excellence, integrity, and customer satisfaction.
             </p>
-            
+
             <div className="space-y-4 mb-8">
               {features.map((feature, index) => (
-                <motion.div 
+                <motion.div
                   key={feature.title}
                   className="flex items-start"
                   initial={{ opacity: 0, y: 10 }}
@@ -111,7 +108,7 @@ const AboutSection: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             <Button variant="primary" size="lg">Learn More About Us</Button>
           </motion.div>
         </div>
